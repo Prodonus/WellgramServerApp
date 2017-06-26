@@ -1,0 +1,70 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "authentication": {
+    "secret": "3a0c63db37346ef0db22197183eafa40b0d19a68b992b91d6a572707f6120b7a51fe4aa59f159b542eb7243fbb295ea6d7c632446f997920c14249c40e726710e5e50d775a799639b4fe5c73d6aea2fb2e0d01c692c8ea1c94479555179f366887bfa2332b3463525627f54e843eb0f81cbc95d66a85443a96e274b0f532ad71aaf0e8e5d20343184cf3d5f4e610a094f36d759771ea279c4044f46f58e384c6f68036c222acab816e7b33f121f5c12469b043590de6931d351b74c31e280bf6baff63602eb844fda32d635c46581029340b213b9ed964238b0205a20eaf0ab3bbb1a99cdaadd1fbeb95f2b5979b67b2081bbc10ad3b37d41413f2806c45d1a6",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "type": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "service": "users",
+      "usernameField": "email",
+      "passwordField": "password"
+    },
+    "google": {
+      "clientID": "your google client id",
+      "clientSecret": "your google client secret",
+      "successRedirect": "/",
+      "scope": [
+        "profile openid email"
+      ]
+    },
+    "facebook": {
+      "clientID": "your facebook client id",
+      "clientSecret": "your facebook client secret",
+      "successRedirect": "/",
+      "scope": [
+        "public_profile",
+        "email"
+      ],
+      "profileFields": [
+        "id",
+        "displayName",
+        "first_name",
+        "last_name",
+        "email",
+        "gender",
+        "profileUrl",
+        "birthday",
+        "picture",
+        "permissions"
+      ]
+    },
+    "cookie": {
+      "enabled": true,
+      "name": "feathers-jwt",
+      "httpOnly": false,
+      "secure": false
+    }
+  },
+  "mongodb": "mongodb://localhost:27017/wellgram_server_app"
+}
